@@ -1,0 +1,45 @@
+{
+  "name": "@s4ai/core",
+  "version": "0.1.0",
+  "description": "S4Ai Core Modules - Shared intelligence, autonomy, and infrastructure modules for all S4Ai services",
+  "main": "src/index.js",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./autonomous": "./src/autonomous/index.js",
+    "./intelligence": "./src/intelligence/index.js",
+    "./monitoring": "./src/monitoring/index.js",
+    "./business": "./src/business/index.js",
+    "./infrastructure": "./src/infrastructure/index.js"
+  },
+  "scripts": {
+    "test": "vitest",
+    "lint": "eslint src/"
+  },
+  "keywords": [
+    "s4ai",
+    "autonomous",
+    "ai",
+    "core",
+    "shared-modules",
+    "mlm",
+    "quantum-reasoning"
+  ],
+  "author": "Bradley Levitan <bradleylevitan@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Onedot2/s4ai-core.git"
+  },
+  "peerDependencies": {
+    "pg": "^8.18.0",
+    "ioredis": "^5.9.2"
+  },
+  "devDependencies": {
+    "vitest": "^2.0.0",
+    "eslint": "^9.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
