@@ -1,11 +1,11 @@
 {
-  "entryPoints": ["src/index.js"],
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["./src"],
   "entryPointStrategy": "expand",
   "out": "docs-static",
   "name": "@s4ai/core Documentation",
   "includeVersion": true,
   "readme": "README.md",
-  "theme": "default",
   "categorizeByGroup": true,
   "categoryOrder": [
     "Autonomous",
@@ -15,19 +15,12 @@
     "Infrastructure",
     "*"
   ],
-  "navigation": {
-    "includeCategories": true,
-    "includeGroups": true
-  },
   "exclude": [
     "**/node_modules/**",
-    "**/dist/**",
-    "**/docs-static/**",
     "**/*.test.js",
     "**/*.spec.js"
   ],
+  "plugin": ["typedoc-plugin-markdown"],
   "excludePrivate": true,
-  "excludeProtected": false,
-  "excludeInternal": false,
-  "plugin": ["typedoc-plugin-markdown"]
+  "tsconfig": "./tsconfig.json"
 }
