@@ -14,7 +14,10 @@
   },
   "scripts": {
     "test": "vitest",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "docs": "typedoc",
+    "docs:watch": "typedoc --watch",
+    "docs:serve": "npx http-server docs-static -p 8080"
   },
   "keywords": [
     "s4ai",
@@ -37,7 +40,9 @@
   },
   "devDependencies": {
     "vitest": "^2.0.0",
-    "eslint": "^9.0.0"
+    "eslint": "^9.0.0",
+    "typedoc": "^0.26.0",
+    "typedoc-plugin-markdown": "^4.0.0"
   },
   "engines": {
     "node": ">=20.0.0"

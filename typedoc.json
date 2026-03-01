@@ -1,0 +1,33 @@
+{
+  "entryPoints": ["src/index.js"],
+  "entryPointStrategy": "expand",
+  "out": "docs-static",
+  "name": "@s4ai/core Documentation",
+  "includeVersion": true,
+  "readme": "README.md",
+  "theme": "default",
+  "categorizeByGroup": true,
+  "categoryOrder": [
+    "Autonomous",
+    "Intelligence",
+    "Monitoring",
+    "Business",
+    "Infrastructure",
+    "*"
+  ],
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": true
+  },
+  "exclude": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/docs-static/**",
+    "**/*.test.js",
+    "**/*.spec.js"
+  ],
+  "excludePrivate": true,
+  "excludeProtected": false,
+  "excludeInternal": false,
+  "plugin": ["typedoc-plugin-markdown"]
+}
