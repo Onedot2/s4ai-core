@@ -7,7 +7,7 @@
  */
 
 import EventEmitter from 'events';
-import { getS4AiMLM } from './s4ai-mlm-massive-learning-model.js';
+import { getS4AiMLM } from '../intelligence/s4ai-mlm-massive-learning-model.js';
 
 class PersistentRoadmap extends EventEmitter {
   constructor() {

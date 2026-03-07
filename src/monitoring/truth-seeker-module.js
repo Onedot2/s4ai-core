@@ -24,7 +24,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { getAladdinStatus, testSecret } from '../services/aladdin.js';
-import { getS4AiMLM } from './s4ai-mlm-massive-learning-model.js';
+import { getS4AiMLM } from '../intelligence/s4ai-mlm-massive-learning-model.js';
 import { getFileTreeOfTruth } from './file-tree-of-truth.js';
 import EventEmitter from 'events';
 

@@ -6,7 +6,7 @@
 
 import logger from '../utils/logger.js';
 import { S4UserAcquisitionOrchestrator } from './s4-user-acquisition.js';
-import { getS4AiMLM } from './s4ai-mlm-massive-learning-model.js';
+import { getS4AiMLM } from '../intelligence/s4ai-mlm-massive-learning-model.js';
 import { AcquisitionSignalEngine } from './acquisition-signal-engine.js';
 import { AcquisitionFunnel } from './acquisition-funnel.js';
 import { QDDMemoryIndexingLayer } from './q-dd-memory-indexing.js';

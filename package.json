@@ -1,6 +1,6 @@
 {
   "name": "@s4ai/core",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "S4Ai Core Modules - Self-contained shared library with all dependencies for S4Ai services",
   "main": "src/index.js",
   "type": "module",

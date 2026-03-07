@@ -127,7 +127,7 @@ describe('Truth Seeker FToT Integration', () => {
 
 describe('MLM FToT Integration', () => {
   it('should have FToT storage methods', async () => {
-    const { getS4AiMLM } = await import('./s4ai-mlm-massive-learning-model.js');
+    const { getS4AiMLM } = await import('../intelligence/s4ai-mlm-massive-learning-model.js');
     const mlm = await getS4AiMLM();
     
     expect(mlm.storeFToTData).toBeDefined();
@@ -141,7 +141,7 @@ describe('MLM FToT Integration', () => {
   });
 
   it('should return empty history when no data', async () => {
-    const { getS4AiMLM } = await import('./s4ai-mlm-massive-learning-model.js');
+    const { getS4AiMLM } = await import('../intelligence/s4ai-mlm-massive-learning-model.js');
     const mlm = await getS4AiMLM();
     
     const history = await mlm.getFToTHistory(30);
