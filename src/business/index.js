@@ -7,11 +7,12 @@
  * @module @s4ai/core/business
  */
 
-// Revenue Optimization (4 modules)
+// Revenue Optimization (5 modules)
 export { default as RevenueOptimization } from './revenue-optimization-engine.js';
 export { default as Revenue } from './revenue.js';
 export { default as RevenueForecaster } from './revenue-forecaster.js';
 export { default as AutonomousRevenueOptimizer } from './autonomous-revenue-optimizer.js';
+export { default as RevenueStripeIntegration } from './revenue-stripe-integration.js';
 
 // Analytics & Dashboards (3 modules)
 export { default as AnalyticsDashboard } from './analytics-dashboard-engine.js';
