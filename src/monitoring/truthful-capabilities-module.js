@@ -26,7 +26,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { getS4AiMLM } from './s4ai-mlm-massive-learning-model.js';
+import { getS4AiMLM } from '../intelligence/s4ai-mlm-massive-learning-model.js';
 import EventEmitter from 'events';
 
 const __filename = fileURLToPath(import.meta.url);

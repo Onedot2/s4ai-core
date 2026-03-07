@@ -5,9 +5,9 @@
  */
 
 import AgenticCore from './agentic-core.js';
-import ResearchEngine from './research-engine.js';
+import ResearchEngine from '../intelligence/research-engine.js';
 import AutonomousLoop from './autonomous-loop.js';
-import KnowledgePersistence from './knowledge-persistence.js';
+import KnowledgePersistence from '../intelligence/knowledge-persistence.js';
 import logger from '../utils/logger.js';
 
 

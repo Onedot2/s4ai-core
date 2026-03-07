@@ -6,7 +6,7 @@
  */
 
 import { AdvancedSwarmAgent, AdvancedSwarmOrchestrator } from './advanced-swarm-coordination.js';
-import { QuantumReasoningV3 } from './quantum-reasoning-v3.js';
+import { QuantumReasoningV3 } from '../intelligence/quantum-reasoning-v3.js';
 import { Phase4Integration } from './phase4-integration.js';
 import logger from '../utils/logger.js';
 

@@ -7,7 +7,7 @@
 import pool from '../db/pool.js';
 import { getQueryOptimizer } from './query-optimizer.js';
 import { getQDDCycleTuner } from './q-dd-cycle-tuner.js';
-import { getMLMLearningOptimizer } from './mlm-learning-optimizer.js';
+import { getMLMLearningOptimizer } from '../intelligence/mlm-learning-optimizer.js';
 
 class SystemHealthMonitor {
   constructor() {
