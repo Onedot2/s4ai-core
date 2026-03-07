@@ -1,6 +1,6 @@
 {
   "name": "@s4ai/core",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "S4Ai Core Modules - Shared intelligence, autonomy, and infrastructure modules for all S4Ai services",
   "main": "src/index.js",
   "type": "module",
