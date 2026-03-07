@@ -6,7 +6,12 @@
  * Optimized: 30 seconds to 5 minutes based on decision type
  */
 
-import pool from '../db/pool.js';
+// Optional DB pool - injected by consuming service
+let pool = null;
+
+export function setDatabasePool(dbPool) {
+  pool = dbPool;
+}
 
 class QDDCycleTuner {
   constructor() {
@@ -79,6 +84,17 @@ class QDDCycleTuner {
    */
   async analyzePerfomance() {
     try {
+      // Require DB pool to be set
+      if (!pool) {
+        console.warn('[Q-DD Cycle Tuner] Database pool not configured - returning defaults');
+        return {
+          avg_confidence: 0.5,
+          avg_cycle_time: this.defaultCycleTime,
+          total_decisions: 0,
+          success_rate: 0
+        };
+      }
+
       // Get recent decisions (last 100)
       const query = `
         SELECT
@@ -188,6 +204,11 @@ class QDDCycleTuner {
    */
   async logTuningMetrics(decisionType, cycleTime, executionTime) {
     try {
+      if (!pool) {
+        console.warn('[Q-DD Cycle Tuner] Database pool not configured - skipping metrics logging');
+        return;
+      }
+
       const query = `
         INSERT INTO q_dd_cycle_metrics (decision_type, cycle_time_ms, execution_time_ms, created_at)
         VALUES ($1, $2, $3, $4)
