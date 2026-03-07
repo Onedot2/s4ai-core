@@ -1,7 +1,7 @@
 {
   "name": "@s4ai/core",
-  "version": "0.3.3",
-  "description": "S4Ai Core Modules - Shared intelligence, autonomy, and infrastructure modules for all S4Ai services",
+  "version": "0.3.4",
+  "description": "S4Ai Core Modules - Self-contained shared library with all dependencies for S4Ai services",
   "main": "src/index.js",
   "type": "module",
   "exports": {
@@ -15,7 +15,14 @@
     "./business": "./src/business/index.js",
     "./business/*": "./src/business/*.js",
     "./infrastructure": "./src/infrastructure/index.js",
-    "./infrastructure/*": "./src/infrastructure/*.js"
+    "./infrastructure/*": "./src/infrastructure/*.js",
+    "./db": "./src/db/pool.js",
+    "./services": "./src/services/index.js",
+    "./services/*": "./src/services/*.js",
+    "./queue": "./src/queue/index.js",
+    "./queue/*": "./src/queue/*.js",
+    "./utils": "./src/utils/index.js",
+    "./utils/*": "./src/utils/*.js"
   },
   "scripts": {
     "test": "vitest",
