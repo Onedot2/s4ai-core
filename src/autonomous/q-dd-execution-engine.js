@@ -7,10 +7,12 @@
  */
 
 import EventEmitter from 'events';
-import { getPublicAPIIntegrator } from './public-api-integrator.js';
-import { getBlackRockAnalyst } from '../agent-core/blackrock-analyst.js';
-import { getCERNQuantumResearcher } from '../agent-core/cern-quantum-researcher.js';
-import { getS4AiMLM } from './s4ai-mlm-massive-learning-model.js';
+
+// Optional imports - loaded dynamically in initialize()
+let getPublicAPIIntegrator = null;
+let getBlackRockAnalyst = null;
+let getCERNQuantumResearcher = null;
+let getS4AiMLM = null;
 
 class QDDExecutionEngine extends EventEmitter {
   constructor(config = {}) {
@@ -60,12 +62,49 @@ class QDDExecutionEngine extends EventEmitter {
     try {
       console.log('[Q-DD Engine] Initializing Quantum-Driven Dominance system...');
       
-      // Initialize all components in parallel
+      // Load optional dependencies dynamically
+      if (!getPublicAPIIntegrator) {
+        try {
+          const integrator = await import('../infrastructure/public-api-integrator.js');
+          getPublicAPIIntegrator = integrator.getPublicAPIIntegrator;
+        } catch (e) {
+          console.warn('[Q-DD Engine] Public API Integrator not available');
+        }
+      }
+
+      if (!getBlackRockAnalyst) {
+        try {
+          const blackrock = await import('../agent-core/blackrock-analyst.js');
+          getBlackRockAnalyst = blackrock.getBlackRockAnalyst;
+        } catch (e) {
+          // Expected in @s4ai/core package - agent-core doesn't exist here
+        }
+      }
+
+      if (!getCERNQuantumResearcher) {
+        try {
+          const cern = await import('../agent-core/cern-quantum-researcher.js');
+          getCERNQuantumResearcher = cern.getCERNQuantumResearcher;
+        } catch (e) {
+          // Expected in @s4ai/core package - agent-core doesn't exist here
+        }
+      }
+
+      if (!getS4AiMLM) {
+        try {
+          const mlm = await import('../intelligence/s4ai-mlm-massive-learning-model.js');
+          getS4AiMLM = mlm.getS4AiMLM;
+        } catch (e) {
+          console.warn('[Q-DD Engine] S4Ai MLM not available');
+        }
+      }
+      
+      // Initialize all components (only if available)
       const [apiIntegrator, blackrockAnalyst, cernResearcher, mlm] = await Promise.all([
-        getPublicAPIIntegrator(),
-        getBlackRockAnalyst(),
-        getCERNQuantumResearcher(),
-        getS4AiMLM()
+        getPublicAPIIntegrator ? getPublicAPIIntegrator().catch(() => null) : Promise.resolve(null),
+        getBlackRockAnalyst ? getBlackRockAnalyst().catch(() => null) : Promise.resolve(null),
+        getCERNQuantumResearcher ? getCERNQuantumResearcher().catch(() => null) : Promise.resolve(null),
+        getS4AiMLM ? getS4AiMLM().catch(() => null) : Promise.resolve(null)
       ]);
 
       this.components.apiIntegrator = apiIntegrator;
@@ -76,9 +115,14 @@ class QDDExecutionEngine extends EventEmitter {
       // Set up event listeners
       this.setupEventListeners();
 
-      console.log('[Q-DD Engine] ✅ All components initialized');
-      console.log('[Q-DD Engine] BlackRock Analyst: Ready');
-      console.log('[Q-DD Engine] CERN Quantum Researcher: Ready');
+      const availableComponents = [
+        blackrockAnalyst && 'BlackRock Analyst',
+        cernResearcher && 'CERN Quantum Researcher',
+        apiIntegrator && 'Public API Integrator',
+        mlm && 'S4Ai MLM'
+      ].filter(Boolean);
+
+      console.log('[Q-DD Engine] ✅ Initialized with components:', availableComponents.join(', ') || 'None (degraded mode)');
       console.log('[Q-DD Engine] Public API Integrator: 15+ sources');
       console.log('[Q-DD Engine] MLM: Persistent memory active');
 
